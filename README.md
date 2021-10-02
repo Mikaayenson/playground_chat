@@ -14,4 +14,7 @@ Let's review the basics.
 - Part 10: Sending Messages
 - Part 11: Sending Images
 - Part 12: Uploading Avatars
-- Part 13: Deploying To Vercel 
+- Part 13: Deploying To Vercel
+
+
+Following the awesome tutorial by [PortExe](https://www.youtube.com/watch?v=ODoxVFQKmBc)
