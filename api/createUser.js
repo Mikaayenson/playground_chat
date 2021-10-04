@@ -3,21 +3,26 @@ import axios from 'axios';
  const createUser = async (req, res) => {
     const  {userId, userName} = req.body;
 
-    axios
-        .post('https://api.chatengine.io/projects/people',
-        {username: userName, secret: userId},
-        {headers: {'Private-Key': process.env.chat_engine_private_key}},
-        )
+    const config = {
+        method: 'post',
+        url: 'https://api.chatengine.io/users/',
+        headers: {
+            'PRIVATE-KEY': process.env.chat_engine_private_key
+        },
+        data : {username: userName, secret: userId}
+    };
+
+    axios(config)
         .then(apiResponse => {
             res.json({
                 body: apiResponse.data,
                 error: null,
             });
         })
-        .catch(() => {
+        .catch((err) => {
             res.json({
                 body: null,
-                error: 'Error creating user',
+                error: err,
             });
         });
   };
