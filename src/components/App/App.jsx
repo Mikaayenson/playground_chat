@@ -1,7 +1,18 @@
-import { Route, Switch } from 'react-router-dom';
+import { useAuth, useResolved } from 'hooks';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import { Chat, Login, Signup } from 'components';
+import { useEffect } from 'react';
 
 export const App = () => {
+    const history = useHistory();
+    const { authUser } = useAuth();
+    const authResolved = useResolved(authUser);
+
+    useEffect(() => {
+        if (authResolved) {
+            history.push(!!authUser ? '/' : '/login');
+        }
+    }, [authUser, authResolved, history]);
 
     return (
         <div className="app">

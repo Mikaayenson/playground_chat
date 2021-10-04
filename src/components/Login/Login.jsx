@@ -1,3 +1,5 @@
+import { fb } from 'service';
+import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { FormField } from 'components';
 import { useHistory } from 'react-router-dom';
@@ -6,8 +8,27 @@ import { defaultValues, validationSchema } from './formikConfig';
 
 export const Login = () => {
     const history = useHistory();
+    const [serverError, setServerError] = useState('');
 
-    const login = ({email, password}, {setSubmitting}) => console.log('Loggin In: ', email, password);
+    const login = ({email, password}, {setSubmitting}) => {
+        fb.auth.signInWithEmailAndPassword(email, password)
+        .then(res => {
+            if (!res.user){
+                setServerError("We're having trouble logging in. Please try again.",
+                );
+            }
+        })
+        .catch(err => {
+            if (err.code === 'auth/wrong-password'){
+                setServerError('Invalid Creds');
+            } else if (err.code === 'auth/user-not-found'){
+                setServerError('No account for this email');
+            } else {
+                setServerError('Something else broke');
+            }
+        })
+        .finally(() => setSubmitting(false));
+    };
 
 
     return (
@@ -30,7 +51,7 @@ export const Login = () => {
                         <div className='auth-link-container'>
                             Don't have an account?{' '}
                             <span className='auth-link' onClick={() => history.push('signup')}>
-                                Log in!
+                                Sign up!
                             </span>
                         </div>
 
@@ -41,6 +62,8 @@ export const Login = () => {
                     </Form>
                 )}
             </Formik>
+
+            {!!serverError && <div className='error'>{serverError}</div>}
 
         </div>
     );

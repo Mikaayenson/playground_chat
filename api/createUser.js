@@ -6,12 +6,11 @@ import axios from 'axios';
     axios
         .post('https://api.chatengine.io/projects/people',
         {username: userName, secret: userId},
-        {headers: {'Content-Type': 'application/json',
-                   'Private-Key': process.env.chat_engine_private_key}}
+        {headers: {'Private-Key': process.env.chat_engine_private_key}},
         )
         .then(apiResponse => {
             res.json({
-                body: apiResponse.body,
+                body: apiResponse.data,
                 error: null,
             });
         })
