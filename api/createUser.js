@@ -9,7 +9,7 @@ import axios from 'axios';
         headers: {
             'PRIVATE-KEY': process.env.chat_engine_private_key
         },
-        data : {username: userName, secret: userId}
+        data : {'username': userName, 'secret': userId}
     };
 
     axios(config)
