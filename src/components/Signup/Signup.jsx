@@ -16,13 +16,13 @@ export const Signup = () => {
             if (res?.user?.uid){
                 fetch('/api/createUser', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
                     body: JSON.stringify({
                          userName,
                          userId: res.user.uid,
                     }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                 })
                 .then(() => {
                     fb.firestore
