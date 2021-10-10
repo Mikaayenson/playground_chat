@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import 'semantic-ui-css/semantic.min.css';
 import { useAuth, useResolved } from 'hooks';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { Chat, Login, Signup } from 'components';
