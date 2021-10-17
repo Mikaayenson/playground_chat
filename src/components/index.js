@@ -4,6 +4,7 @@ export * from './ChatAvatar';
 export * from './ChatInput';
 export * from './ChatList';
 export * from './ChatToolbar';
+export * from './ImageUpload';
 export * from './LeftRail';
 export * from './Login';
 export * from './MessageList';
