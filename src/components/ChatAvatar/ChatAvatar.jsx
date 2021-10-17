@@ -2,7 +2,6 @@ import { fb } from 'service';
 import { useEffect, useState } from 'react';
 import { useChat } from 'context';
 import { Image } from 'semantic-ui-react';
-import { notMe } from 'helpers';
 
 export const ChatAvatar = ({chat, username, className}) => {
     const { chatConfig } = useChat();
