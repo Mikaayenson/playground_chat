@@ -8,6 +8,7 @@ export * from './ImageUpload';
 export * from './LeftRail';
 export * from './Login';
 export * from './MessageList';
+export * from './RailHeader';
 export * from './SearchUsers';
 export * from './Signup';
 export * from './FormField';

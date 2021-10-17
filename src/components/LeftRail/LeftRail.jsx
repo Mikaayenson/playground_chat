@@ -1,13 +1,14 @@
 import { useChat } from 'context';
-import { ChatList } from 'components';
 import { useResolved } from 'hooks';
 import { Loader } from 'semantic-ui-react';
+import { ChatList, RailHeader } from 'components';
 
 export const LeftRail = () => {
     const { myChats, createChatClick } = useChat();
     const chatsResolved = useResolved(myChats);
 
     return <div className="left-rail">
+        <RailHeader/>
         {chatsResolved ? (
             <>
                 {!!myChats.length ? (
